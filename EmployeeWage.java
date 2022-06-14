@@ -3,14 +3,12 @@ package com.bridgelabz;
 public class EmployeeWage {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
-    public static final int EMPLOYEE_RATE_PER_HOUR = 20;
-    public static final int NUMBER_OF_WORKING_DAYS = 20;
-    public static final int MAX_HOURS_A_MONTH = 100;
-    public static void employeeWage(){
+
+    public static int employeeWage(String company, int employeeRatePerHour, int numberOfWorkingDays, int maxHoursAMonth){
         int employeeHours = 0;
         int totalWorkingDays = 0, totalEmployeeHours=0;
 
-        while (totalEmployeeHours <= MAX_HOURS_A_MONTH && totalWorkingDays < NUMBER_OF_WORKING_DAYS) {
+        while (totalEmployeeHours <= maxHoursAMonth && totalWorkingDays < numberOfWorkingDays) {
             totalWorkingDays++;
             int employeeCheck = (int) Math.floor(Math.random() * 10) % 3;
 
@@ -28,11 +26,14 @@ public class EmployeeWage {
             System.out.println("Day " + totalWorkingDays +" Employee working Hour: "+employeeHours);
 
         }
-        int totalEmployeeWage = totalEmployeeHours * EMPLOYEE_RATE_PER_HOUR;
+        int totalEmployeeWage = totalEmployeeHours * employeeRatePerHour;
         System.out.println();
-        System.out.println("Total employee wage : " +totalEmployeeWage );
+        System.out.println("Total employee wage for company " +company+ " is " +totalEmployeeWage );
+        return totalEmployeeWage;
     }
     public static void main(String[] ags) {
-        employeeWage();
+        employeeWage("TATA",20,20,100);
+        employeeWage("Reliance", 25, 25, 150);
+        employeeWage("Adani", 30, 35, 175);
     }
 }
